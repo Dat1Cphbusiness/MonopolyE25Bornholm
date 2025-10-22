@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Game g = new Game("Monopoly",3);
+        Game g = new Game("Yatzy",3);
         g.startSession();
 
         // run the game loop
