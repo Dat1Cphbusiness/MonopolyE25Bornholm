@@ -6,8 +6,8 @@ class Player
 
 
 Game *-- Player
-Game *-- TextUI
-Game *-- FileIO
+Game ..> TextUI
+Game ..> FileIO
 
 
 
@@ -15,10 +15,8 @@ class Game {
 - String name
 - int maxPlayers
 - List<Player>
-- TextUI ui
-- FileIO io
 + Game(String name, int maxPlayers)
-- void createPlayer(String name, int balance)
+- void createPlayer(String name, int score)
 + void registerPlayers()
 + void startSession()
 + void endSession()
@@ -32,21 +30,21 @@ class Player {
 }
 
 class TextUI {
-- Scanner scan
+- {static} Scanner scan
 ' shows a message and returns the user's input as a String
-+ String promptText(String msg)
++ {static} String promptText(String msg)
 ' shows a message and returns the user's input as an integer
-+ int promptNumeric(String msg)
++ {static} int promptNumeric(String msg)
 ' shows the options, promts for choices until limit is reached, and returns the user's choices as a list
-+ ArrayList<Integer> promptChoice(ArrayList<String> options, int limit, String msg)
++ {static} ArrayList<Integer> promptChoice(ArrayList<String> options, int limit, String msg)
 ' shows a message and lists the content of a list
-+ void displayList(ArrayList<String> list, String msg)
-+ void displayList(ArrayList<Integer> choices, ArrayList<Integer> options, String msg)
++ {static} void displayList(ArrayList<String> list, String msg)
++ {static} void displayList(ArrayList<Integer> options, ArrayList<Integer> choices, String msg)
 }
 
 class FileIO{
-+ void saveData(ArrayList<String>, String path, String header)
-+ ArrayList<String> readData(String path)
++ {static} void saveData(ArrayList<String> data, String path, String header)
++ {static} ArrayList<String> readData(String path)
 }
 
 @enduml
