@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Game
+class Player
+
+
+Game *-- Player
+Game *-- TextUI
+Game *-- FileIO
+
+
+
+class Game {
+- String name
+- int maxPlayers
+- List<Player>
+- TextUI ui
+- FileIO io
++ Game(String name, int maxPlayers)
+- void createPlayer(String name, int balance)
++ void registerPlayers()
++ void startSession()
++ void endSession()
+
+}
+class Player {
+- String name
+- int score
++ Player(String name, int score)
++ String toString()
+}
+
+class TextUI {
+- Scanner scan
+' shows a message and returns the user's input as a String
++ String promptText(String msg)
+' shows a message and returns the user's input as an integer
++ int promptNumeric(String msg)
+' shows the options, promts for choices until limit is reached, and returns the user's choices as a list
++ ArrayList<Integer> promptChoice(ArrayList<String> options, int limit, String msg)
+' shows a message and lists the content of a list
++ void displayList(ArrayList<String> list, String msg)
++ void displayList(ArrayList<Integer> choices, ArrayList<Integer> options, String msg)
+}
+
+class FileIO{
++ void saveData(ArrayList<String>, String path, String header)
++ ArrayList<String> readData(String path)
+}
+
+@enduml

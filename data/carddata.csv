@@ -1,0 +1,45 @@
+Message; Income; Cost; Event
+Betal deres forsikring-1000 kr.; 0; 1000; payment
+Ryk tre felter tilbage.; 0; 0; moveSteps
+De har lagt penge ud til et sammenskudsgille. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller kr. 500.; 500; 0; recieveFromPlayers
+Tag ind på Rådhuspladsen.; 0; 0; moveToField
+De har vundet i klasselotteriet. Modtag 500 kr.; 500; 0; Reward
+Det er deres fødselsdag. Modtag af hver medspillet kr. 200.; 200; 0; recieveFromPlayers
+Tag med Mols-linien. Flyt brikken frem og hvis de passerer "START" indkasser da kr. 4000.; 0; 0; takeFerry
+Gå i fængsel. Ryk direkte til fængslet. Selv om De passere "START" indkassere de ikke kr. 4000.; 0; 0; moveToField
+De havde en række med 11 rigtige i tipning. Modtag kr. 1000.; 1000; 0; reward
+I anledning af Kongens fødselsdag benådes de herved fra fængsel. Dette kort kan opbevares til De har brug for det eller De kan sælge det.; 0; 0; wildCard
+De modtager deres aktieudbytte modtag kr. 1000 af banken.; 1000; 0; reward
+Tag med den nærmeste færge. Flyt brikken frem, og hvis de passerer "Start", indkassér da kr. 4000.; 0; 0; moveToField
+Kommunen har eftergivet et kvartalsskat. Hæv i banken kr. 3000.; 3000; 0; reward
+De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500.; 500; 0; recieveFromPlayers
+Ejendomsskatterne er steget. Ekstraudgifterne er: kr. 800 pr. hus - kr. 2.300 pr. hotel.; 0; 1300; paymentTimesProperties
+Ryk tre felter tilbage.; 0; 0; moveSteps
+De modtager "Matador-legatet" for værdigt trængende på kr. 40.000. ved værdigt trængende forstås, at deres formue, dvs. deres kontante penge + skøder + bygninger, ikke overstiger kr.15.000.; 40000; 0; reward
+Deres præmieobligation er udtrukket. De modtager kr. 1.000 af banken.; 1000; 0; reward
+Ryk brukken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen, kan de købe det af banken.; 0; 0; moveToField
+Ryk frem til Frederiksberg Allé. Hvis de passere "START", indkassér da kr. 4.000.; 0;0; moveToField
+Ryk frem til "START".; 0; 0; moveToField
+Ryk frem til Grønningen. Hvis de passerer "START", indkassér da kr. 4000.; 0; 0; moveToField
+Værdien af egen avl fra nyttehaven udgør kr. 200, som De modtager af banken.; 200; 0; reward
+Oliepriserne er steget, og De skal betale: kr. 500 pr. hus - kr. 2000 pr. hotel.; 0; 1300; paymentTimesProperties
+Ryk frem til "START".; 0; 0; moveToField
+Grundet dyrtiden har De fået gageforhøjelse modtag kr.1.000.; 1000; 0; reward
+Betal for vognvask og smøring kr. 300.; 0; 300; payment
+Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer "START", indkasserer De ikke kr. 4000.; 0; 0; moveToField
+Deres præmieobligation er udtrukket. De modtager kr. 1.000 af banken.; 1000; 0; reward
+Ryk frem til Vimmelskaftet. Hvis De passerer "START", indkassér da kr. 4000.; 0; 0; moveToField
+De har været en tur i udlandet og haft for mange cigaretter med hjem. Betal told kr. 200.; 0; 200; payment
+De har købt 4 nye dæk til Deres vogn. Betal kr. 1000.; 0; 1000; payment
+Betal kr. 3000 for reperation af Deres vogn.; 0; 3000; payment
+Ryk tre felter frem.; 0; 0; moveSteps
+De har kørt frem for "Fuldt stop". Betal kr. 1000 i bøde.; 0; 1000; payment
+De har solgt nogle gamle møbler på auktion. Modtag kr. 1000 af banken.; 1000; 0; reward
+Betal kr. 200 for levering af 2 kasser øl.; 0; 200; payment
+Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen kan De købe det af banken.; 0; 0; takeFerry
+De har vundet i Klasselotteriet. Modtag kr. 500.; 500; 0; reward
+Modtag udbytte af Deres aktier - kr. 1.000.; 1000; 0; reward
+Modtag udbytte af Deres aktier - kr. 1000.; 1000; 0; reward
+De har modtaget Deres tandlægeregning. Betal kr. 2.000.; 0; 2000; payment
+Betal kr. 3.000 for reperation af Deres vogn.; 0; 3000; payment
+De modtager Deres aktieudbytte. Modtag kr. 1.000 af banken.; 1000; 0; reward

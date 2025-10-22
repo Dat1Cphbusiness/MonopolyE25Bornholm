@@ -1,0 +1,25 @@
+
+@startuml
+!pragma layout smetana
+(*)  --> "Find field's series size (2,3 or 4) \n call it 'seriesSize'"
+     --> Make empty list 'deedsInSeries'
+     --> Loop player's deeds
+
+ If "is next deed\nin same series as this field ?    " then
+
+  --> [Yes]  "add deed to 'deedsInSeries'"
+  --> "Loop player's deeds"
+  else
+     --> [No] "Loop player's deeds"
+
+
+  EndIf
+
+  If "    Is size of deedsInSeries\n equal to 'seriesSize'?" then
+  --> [Yes] "Loop 'deedsInSeries'"
+  --> mark field as monopolized
+  else
+
+  EndIf
+
+@enduml

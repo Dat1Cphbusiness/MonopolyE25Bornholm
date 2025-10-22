@@ -1,0 +1,23 @@
+@startuml
+!pragma layout smetana
+(*)  --> "Land on Property"
+
+ If "Someone owns the property?" then
+
+  --> [Yes] If "Is owner currentPlayer?" then
+
+     --> [No] "Pay"
+      Endif
+  else
+   --> [No] If "Accept option to buy"
+          --> [Yes] "Buy"
+           If "Owner has complete series"
+           -->  [Yes] Mark all fields in series \nas monopolized
+          Endif
+        Endif
+  Endif
+
+
+
+
+@enduml

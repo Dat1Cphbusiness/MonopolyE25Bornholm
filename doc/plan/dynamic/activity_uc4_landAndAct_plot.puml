@@ -1,0 +1,20 @@
+@startuml
+!pragma layout smetana
+(*)  --> "Land on Plot"
+
+
+  --> [Yes] If "Is owner currentPlayer?" then
+     --> [Yes]  If "Field is monopolized?"
+        --> [Yes] If "Accept option to build"
+        --> [Yes] "Build"
+      Endif
+
+      Endif
+
+      Endif
+
+
+
+
+
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+' player lands on a Property field which has no owner and decides to buy it
+participant Game as game
+participant TextUI as ui
+participant Plot as plot
+participant Property as property
+participant Field  as field
+
+'Egon lander på Valbylanggade som ikke ejes af nogen
+
+game -> game : landAndAct(f)
+game -> plot: msg = onLand(player)
+plot -> property : msg = super.onLand(player);
+property -> field: msg = super.onLand(player);
+field --> property: "Egon er landet på Valbylanggade"
+
+alt owner == null
+ property -> field : option ="BUY"
+ property -> property: msg +=  "Vil du købe Valbylanggade? Y/N"
+else if owner != player
+ property -> property :  msg += "Betal 2000kr i husleje."
+ subField -> Player :pay(this)
+ Player -> Account : this.withdraw(f.income)
+ Player -> Player : f.owner.receive(f.income)
+
+end
+
+property --> game : "Egon er landet på Valbylanggade. \n Vil du købe Valbylanggade? Y/N"
+
+game -> ui : response = promptText(msg)
+
+ui --> game : "Y"
+
+
+alt response true
+    game  ->  plot : msg = onAccept(player)
+
+    alt option == "BUY"
+        plot -> Player: buyProperty(this)
+        Player -> Player : addDeed(f)
+        Player -> Account :withdraw(f.cost)
+        property --> game : "Egon købte Valbylanggade"
+
+    else if option == "build"
+             subField -> Player : build(this)
+
+    end
+
+else response false
+    game -> subField : msg = onReject(player)
+    subField --> game : "Egon takke nej til at købe Valbylanggade"
+    end
+
+game -> ui : displayMessage( msg )
+
+
+' only in Plot.onLand
+' alt this.isMonopolised
+' subField -> subField :  this.option = "build"\nmsg = "Vil du bygge? Y/N"'
+
+@enduml

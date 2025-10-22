@@ -1,0 +1,55 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/class-diagram
+
+class Game
+class Player
+
+
+Game *-- Player
+Game *-- TextUI
+Game *-- FileIO
+
+
+
+class Game {
+- String name
+- int maxPlayers
+- List<Player>
+- TextUI ui
+- FileIO io
+- Player currentPlayer
++ Game(String name, int maxPlayers)
+- void createPlayer(String name, int balance)
++ void registerPlayers()
++ void runGameLoop()
+-void throwAndMove()
+-void landAndAct()
++ void startSession()
++ void endSession()
+
+}
+class Player {
+- String name
+- int score
++ Player(String name, int score)
++ String toString()
++ String getName()
+}
+
+class TextUI {
+- Scanner scan
++ boolean promptBinary(String msg)
++ String promptText(String msg)
++ int promptNumeric(String msg)
++ ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
++ void displayMessage(String msg)
++ void displayList(ArrayList<String> list, String msg)
+}
+
+class FileIO{
++ void saveData(ArrayList<String>, String path, String header)
++ ArrayList<String> readData(String path)
+}
+
+@enduml

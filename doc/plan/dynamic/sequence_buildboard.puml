@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Game -> Game: buildBoard()
+
+Game -> FileIO: String[] fielddata = readData("fields.csv", 40)
+Game -> FileIO: String[] carddata = readData("cards.csv", 100)
+
+Game -> Board : new(fielddata, carddata)
+
+Board -> Board : createFields(fielddata)
+
+loop fielddata.length
+Board -> Field : new (id, label, cost, income)
+end
+
+Board -> CardDeck : cardDeck = new(carddata)
+
+CardDeck -> CardDeck : createCards(data)
+
+loop data.length
+CardDeck -> Card : new (message, income, cost, event)
+end
+
+
+@enduml
