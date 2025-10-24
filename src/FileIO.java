@@ -3,6 +3,7 @@
 *  To use, each object in a list must first be serialized (field values of the object are added to the same String, separated by comma)
 *
 *  TODO: To avoid leakage, both scanner and FileWriter must be closed, suggestion to use try-with-ressources in both methods
+*  TODO: catch exception if the file is found but empty
 * */
 
 import java.io.File;
@@ -10,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class FileIO {
@@ -27,9 +27,7 @@ public class FileIO {
             }
             writer.close();
 
-
         }catch (IOException e) {
-
             System.out.println("problem: "+ e.getMessage());
         }
     }
@@ -47,8 +45,6 @@ public class FileIO {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Filen findes ikke");
-        }catch (NoSuchElementException e){
-            System.out.println("Filen findes, men den er tom");
         }
         return data;
     }
