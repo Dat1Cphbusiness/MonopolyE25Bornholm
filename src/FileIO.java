@@ -17,7 +17,7 @@ public class FileIO {
 
 
 
-    public static void saveData(ArrayList<String> list, String path, String header){
+    public void saveData(ArrayList<String> list, String path, String header){
         try {
 
             FileWriter writer = new FileWriter(path);
@@ -34,7 +34,7 @@ public class FileIO {
         }
     }
 
-    public static ArrayList<String> readData(String path) {
+    public ArrayList<String> readData(String path) {
         ArrayList<String> data = new ArrayList<>();
         File file = new File(path);
         try {

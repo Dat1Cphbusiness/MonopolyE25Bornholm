@@ -6,7 +6,7 @@ public class Game {
     private String name;
     private int maxPlayers;
     private ArrayList<Player> players;
-    TextUI ui =new TextUI();
+    TextUI ui = new TextUI();
     FileIO io = new FileIO();
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -16,7 +16,7 @@ public class Game {
 
 
     public void startSession(){
-        ArrayList<String> data = FileIO.readData("data/playerData.csv");
+        ArrayList<String> data = io.readData("data/playerData.csv");
         if(!data.isEmpty()){
             for(String s : data){
                 String[] values =  s.split(",");//  "tess, 0"
@@ -36,7 +36,7 @@ public class Game {
 
 
         while(this.players.size() < this.maxPlayers) {
-            String playerName = TextUI.promptText("Tast spiller navn");
+            String playerName = ui.promptText("Tast spiller navn");
             this.createPlayer(playerName, 0);
         }
     }
@@ -63,6 +63,6 @@ public class Game {
             playerData.add(s);
 
         }
-       FileIO.saveData(playerData, "data/playerData.csv", "Name, Score");
+       io.saveData(playerData, "data/playerData.csv", "Name, Score");
     }
 }

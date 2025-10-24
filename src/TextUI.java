@@ -36,7 +36,7 @@ public class TextUI {
         return numInput;
     }
 
-    public static String promptText(String msg){
+    public String promptText(String msg){
         System.out.println(msg);               //Stille brugeren et spørgsmål
         String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
 
