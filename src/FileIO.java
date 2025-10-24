@@ -10,10 +10,8 @@ public class FileIO {
 
 
 
-    public void saveData(ArrayList<String> list, String path, String header){
-        try {
-            FileWriter writer = new FileWriter(path);
-
+    public static void saveData(ArrayList<String> list, String path, String header){
+        try(FileWriter writer = new FileWriter(path)) {
 
 
             writer.write(header+"\n");
@@ -30,11 +28,11 @@ public class FileIO {
 
     }
 
-    public ArrayList<String> readData(String path) {
+    public static ArrayList<String> readData(String path) {
         ArrayList<String> data = new ArrayList<>();
         File file = new File(path);
-        try {
-            Scanner scan = new Scanner(file);
+        try ( Scanner scan = new Scanner(file);){
+
             scan.nextLine(); // skip header "Name, Score"
 
             while (scan.hasNextLine()) {

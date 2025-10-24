@@ -2,8 +2,7 @@ import java.util.ArrayList;
 
 
 public class Game {
-    static TextUI ui = new TextUI();
-    static FileIO io = new FileIO();
+
 
 
 
@@ -19,7 +18,7 @@ public class Game {
 
 
     public void startSession(){
-        ArrayList<String> data = io.readData("data/playerData.csv");
+        ArrayList<String> data = FileIO.readData("data/playerData.csv");
         if(!data.isEmpty()){
             for(String s : data){
                 String[] values =  s.split(",");//  "tess, 0"
@@ -38,8 +37,8 @@ public class Game {
     public void registerPlayers(){
 
 
-        while(this.players.size() <= this.maxPlayers) {
-            String playerName = ui.promptText("Tast spiller navn");
+        while(this.players.size() < this.maxPlayers) {
+            String playerName = TextUI.promptText("Tast spiller navn");
             this.createPlayer(playerName, 0);
         }
     }
@@ -66,6 +65,6 @@ public class Game {
             playerData.add(s);
 
         }
-       io.saveData(playerData, "data/playerData.csv", "Name, Score");
+       FileIO.saveData(playerData, "data/playerData.csv", "Name, Score");
     }
 }
