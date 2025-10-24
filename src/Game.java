@@ -3,13 +3,11 @@ import java.util.ArrayList;
 
 public class Game {
 
-
-
-
     private String name;
     private int maxPlayers;
     private ArrayList<Player> players;
-
+    TextUI ui =new TextUI();
+    FileIO io = new FileIO();
     public Game(String name, int maxPlayers){
         this.name = name;
         this.maxPlayers = maxPlayers;

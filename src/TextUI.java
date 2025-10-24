@@ -8,7 +8,7 @@ public class TextUI {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static ArrayList<String> promptChoice( ArrayList<String> options, int limit, String msg){
+    public ArrayList<String> promptChoice( ArrayList<String> options, int limit, String msg){
 
         displayList(options, "");
 
@@ -22,13 +22,13 @@ public class TextUI {
         return choices;
     }
 
-    public static void displayList(ArrayList<String>list, String msg) {
+    public void displayList(ArrayList<String>list, String msg) {
         for (int i = 0; i < list.size();i++) {
             System.out.println(i+1+". "+list.get(i));
         }
     }
 
-    public static int promptNumeric(String msg){
+    public int promptNumeric(String msg){
         System.out.println(msg);                       //Stille brugeren et spørgsmål
         String input = sc.nextLine();                  //Give brugere et sted at placere sit svar og vente på svaret
         int numInput = Integer.parseInt(input);        //Konvertere svaret til et tal

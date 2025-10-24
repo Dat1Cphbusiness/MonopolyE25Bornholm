@@ -18,8 +18,6 @@ public class FileIO {
 
 
     public static void saveData(ArrayList<String> list, String path, String header){
-
-
         try {
 
             FileWriter writer = new FileWriter(path);
@@ -34,7 +32,6 @@ public class FileIO {
 
             System.out.println("problem: "+ e.getMessage());
         }
-
     }
 
     public static ArrayList<String> readData(String path) {
@@ -47,7 +44,6 @@ public class FileIO {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();   //  "Egon, 1000000"
                 data.add(line);
-
             }
         } catch (FileNotFoundException e) {
             System.out.println("Filen findes ikke");
