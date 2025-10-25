@@ -41,7 +41,8 @@ class TextUI {
 + ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
 ' shows a message and lists the content of a list
 +  void displayList(ArrayList<String> list, String msg)
-
+' shows a message
++ void displayMsg(String msg)
 }
 
 class FileIO{
