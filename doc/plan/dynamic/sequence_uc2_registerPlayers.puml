@@ -1,0 +1,24 @@
+@startuml
+!pragma layout smetana
+participant Game
+participant TextUI
+participant Player
+participant "players:ArrayList" as ArrayList
+
+ Game -> Game:registerPlayers()
+ activate Game
+ Game -> TextUI: totalPlayers = promptNumeric("Tast antal deltagere:")
+
+loop [[\ players.size() < totalPlayers ]]
+ Game -> TextUI: name = promptText("Tast navn på spiller:")
+ Game -> Game: createPlayer(name, startAmount)
+ activate Game
+
+ Game -> Player: player = new Player(name, startAmount)
+ activate Player
+ return player
+ Game -> ArrayList: players.add(player)
+ deactivate Game
+end
+
+@enduml
