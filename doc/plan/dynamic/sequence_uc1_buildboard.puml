@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant Game
+participant FileIO
+participant Board
+participant Field
+participant CardDeck
+participant Card
+
+
+Game -> Game: buildBoard()
+activate Game
+Game -> FileIO: readData("fields.csv", 40)
+activate FileIO
+return fielddata
+
+Game -> FileIO: readData("cards.csv", 100)
+activate FileIO
+return carddata
+
+
+Game -> Board : new Board(fielddata, carddata)
+activate Board
+
+
+Board -> Board : createFields(fielddata)
+
+
+loop  for each element in fielddata.length
+
+
+Board -> Field : new Field(id, label, cost, income)
+activate Field
+return field
+
+end
+
+'indsæt kald til readCardData
+'indsæt kald til konstruktoren i CardDeck
+'indsæt kald til createCards
+'indsæt kald til konstruktoren i Card
+
+return board
+deactivate Game
+@enduml
