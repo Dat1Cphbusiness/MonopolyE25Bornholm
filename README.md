@@ -40,6 +40,6 @@ Hvert niveau bygger videre på de foregående:
 * Lektion 5: Niveau 5, 4, (3), 2, 1
 
 Vi øver os på at nedbryde projektet i overskuelige dele og på at lede for fordele arbejdsopgaver mellem 
-alle på holdet. [Læs evt. denne artikel]([sdlc](https://www.geeksforgeeks.org/software-engineering/software-development-life-cycle-sdlc/)).
+alle på holdet. [Læs evt. denne artikel](https://www.geeksforgeeks.org/software-engineering/software-development-life-cycle-sdlc).
 
 ![sdlc](./images/sdlc.jpg)
