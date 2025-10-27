@@ -2,10 +2,6 @@
 
 ![Monopoly](./images/matador.jpg)
 
-Her er en strammet og flydende dansk oversættelse af din tekst, tilpasset undervisningsbrug:
-
----
-
 ## Beskrivelse
 
 Dette projekt er udviklet af studerende på baggrund af et objektorienteret design i form af et klassediagram og 
@@ -24,7 +20,7 @@ førsteårsstuderende på datamatikeruddannelsen.
 2. **Hjælpeklasser** (`util.TextUI, util.FileIO`)
    Hvordan klasser uden for domænet kan udformes som generiske moduler, der kan genbruges i forskellige projekter.
 
-3. **Objektanalyse** (`Game, Player, Board, Field`)
+3. **Objektorienteret analyse** (`Game, Player, Board, Field`)
    Hvordan analyse af krav afslører de vigtigste entiteter og kandidater til klasser.
 
 4. **Komposition**
