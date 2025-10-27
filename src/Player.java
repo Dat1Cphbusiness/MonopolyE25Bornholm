@@ -1,15 +1,15 @@
 public class Player {
     private String name;
-    private int score;
+    private int cash;
     
-    public Player(String name, int score){
+    public Player(String name, int cash){
         this.name = name;
-        this.score = score;
+        this.cash = cash;
     }
 
     @Override
     public String toString(){
-        return name + ", "+ score;
+        return name + ", "+ cash;
     }
 
 

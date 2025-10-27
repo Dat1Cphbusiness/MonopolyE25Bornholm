@@ -15,8 +15,6 @@ import java.util.Scanner;
 
 public class FileIO {
 
-
-
     public void saveData(ArrayList<String> list, String path, String header){
         try {
 

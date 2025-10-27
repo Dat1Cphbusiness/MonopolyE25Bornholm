@@ -1,28 +1,49 @@
 # Matador ( Monopoly )
 
-## Description:
-This is a project implemented by students following an object oriented design document in the form of a class diagram and sequence diagrams covering the most central use-cases of the Monopoly game play.
-The project is used to demonstrate principles of object oriented programming (as well as analysis and design), to first year students of a CS education.
+![Monopoly](./images/matador.jpg)
+
+Her er en strammet og flydende dansk oversættelse af din tekst, tilpasset undervisningsbrug:
+
+---
+
+## Beskrivelse
+
+Dette projekt er udviklet af studerende på baggrund af et objektorienteret design i form af et klassediagram og 
+sekvensdiagrammer, der dækker de centrale use cases i Matador-spillet.
+Formålet er at demonstrere principperne i objektorienteret programmering – samt analyse og design – for 
+førsteårsstuderende på datamatikeruddannelsen.
+
+---
+
+## Niveauer og læringsmål
+
+1. **Klient- og domæneklasse** (`Player - Account`)
+   Hvordan en klasse kan indeholde og anvende en anden klasses funktionalitet.
+   Eksempel: `Player` bruger en `Account` til at håndtere spillerens penge i stedet for selv at implementere logikken.
+
+2. **Hjælpeklasser** (`util.TextUI, util.FileIO`)
+   Hvordan klasser uden for domænet kan udformes som generiske moduler, der kan genbruges i forskellige projekter.
+
+3. **Objektanalyse** (`Game, Player, Board, Field`)
+   Hvordan analyse af krav afslører de vigtigste entiteter og kandidater til klasser.
+
+4. **Komposition**
+   Hvordan koden opdeles i selvstændige enheder og forbindes til en helhed (`Game - Board - Field`).
+
+5. **Abstraktion** (`Field < Property < Space`)
+   Hvordan klasser kan dele implementering gennem nedarvning eller love bestemte adfærd via interfaces for at muliggøre polymorfi.
+
+## Iteration og progression
+
+Hvert niveau bygger videre på de foregående:
+
+* Lektion 1: Niveau 1
+* Lektion 2: Niveau 2, 1
+* Lektion 3: Niveau 3, 2, 1
+* Lektion 4: Niveau 4, (3), 2, 1
+* Lektion 5: Niveau 5, 4, (3), 2, 1
+
+Vi øver os på at nedbryde projektet i overskuelige dele og på at lede for fordele arbejdsopgaver mellem alle på holdet.
 
 
-### Levels and objectives
-1. **Client class and Domain class** (```Player - Account```)<br />
-How one class will hold an instance of another class and use it's methods to get things done.
-2. **Utility classes** (```util.TextUI, util.FileIO```)<br />
-How we have classes that are not part of the domain, and should be coded as generic helper modules that can be reused on differenc projects
-3. **Object analysis** (```Game, Player, Board, Field```)<br /> 
-How analysing the functional requirements should uncover the most important entities, candidate classes  
-4. **Composition** <br />
-How code is separated into autonomous entities and connected to form a structure  (Game - Board - Field)
-5. **Abstraction** (```Field < Property < Plot```).<br />
-How classes can share implementations (inheritance) or promise to implement certain behaviours (interface) to enable polymorphism.
-
-
-
-### With each level, we include new iterations on previous leves (some more vigourusly than others):
-* lesson 1: level 1
-* lesson 2: level 2, 1
-* lesson 3: level 3, 2, 1
-* lesson 4: level 4, (3), 2, 1
-* lesson 5: level 5, 4, (3), 2, 1
 

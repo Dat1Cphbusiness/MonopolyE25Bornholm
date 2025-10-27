@@ -5,43 +5,45 @@ import java.util.Scanner;
 
 public class TextUI {
 
-
     private static Scanner sc = new Scanner(System.in);
 
-    public ArrayList<String> promptChoice( ArrayList<String> options, int limit, String msg){
+    /* Let the user choose a number of integers bound by limit  */
+    public ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg) {
         displayMsg(msg);
         displayList(options, "");
-        ArrayList<String> choices = new ArrayList<>();  //Lave en beholder til at gemme brugerens valg
+        ArrayList<String> choices = new ArrayList<>();
 
-        while(choices.size() < limit){             //tjekke om brugeren skal vælge igen
-
+        while (choices.size() < limit) {
             int choice = promptNumeric(msg);
-            choices.add(options.get(choice-1));
+            choices.add(options.get(choice - 1));
         }
         return choices;
     }
 
-    public void displayList(ArrayList<String>list, String msg) {
-        for (int i = 0; i < list.size();i++) {
-            System.out.println(i+1+". "+list.get(i));
+    /* Shows some lines of text and prefixes a line number */
+    public void displayList(ArrayList<String> list, String msg) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(i + 1 + ". " + list.get(i));
         }
     }
-    public void displayMsg(String msg){
+
+    /* A wrapper for String.out.println */
+    public void displayMsg(String msg) {
         System.out.println(msg);
-
     }
-    public int promptNumeric(String msg){
-        displayMsg(msg);                       //Stille brugeren et spørgsmål
-        String input = sc.nextLine();                  //Give brugere et sted at placere sit svar og vente på svaret
-        int numInput = Integer.parseInt(input);        //Konvertere svaret til et tal
 
+    /* Prints a message and fetches a number from the console */
+    public int promptNumeric(String msg) {
+        displayMsg(msg);
+        String input = sc.nextLine();
+        int numInput = Integer.parseInt(input); //Konverterer svaret til et tal TODO: Exception handling
         return numInput;
     }
 
-    public String promptText(String msg){
-        displayMsg(msg);         //Stille brugeren et spørgsmål
-        String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
-
+    /* Prints a message and fetches a line of text from the console */
+    public String promptText(String msg) {
+        displayMsg(msg);
+        String input = sc.nextLine();
         return input;
     }
 }

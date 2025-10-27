@@ -13,11 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Game g = new Game("Yatzy",3);
-        g.startSession();
+        Game monopoly = new Game("Monopoly", 3);
+        monopoly.startSession();
 
         // missing here is the logic of the game
 
-        g.endSession();
+        monopoly.endSession();
     }
 }
