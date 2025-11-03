@@ -46,4 +46,13 @@ alle på holdet. [Læs evt. denne artikel](https://www.geeksforgeeks.org/softwar
 
 ## Data docs
 
-[Google doc](https://docs.google.com/spreadsheets/d/1jAHZ-FClwzCqnofuv8mTcKh8IiemnC2ZxSZwJ1L7Dn8/edit?usp=sharing)
+- [boardData](https://docs.google.com/spreadsheets/d/1jAHZ-FClwzCqnofuv8mTcKh8IiemnC2ZxSZwJ1L7Dn8/edit?usp=sharing)
+- [userStories]()
+
+## Domain model
+
+![Domain model](./images/domain-model.svg)
+
+## Use Case Diagram
+
+![Use case diagram](./images/usecasediagram.png)
