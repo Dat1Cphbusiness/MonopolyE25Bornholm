@@ -16,7 +16,8 @@ public class Main {
     public static void main(String[] args) {
 
         Game monopoly = new Game("Monopoly", 3);
-        monopoly.startSession();
+        monopoly.setup();
+        monopoly.gameLoop();
 
         // missing here is the logic of the game
 

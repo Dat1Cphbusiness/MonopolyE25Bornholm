@@ -4,14 +4,17 @@ import utils.FileIO;
 import utils.TextUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Game {
 
     private String name;
     private int maxPlayers;
+    private int currentPlayerIndex;
     private ArrayList<Player> players;
     private Board board;
+    private Dice dice;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
 
@@ -20,9 +23,11 @@ public class Game {
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
         board = new Board();
+        dice = new Dice();
+        currentPlayerIndex = 0;
     }
 
-    public void startSession() {
+    public void setup() {
 
         // Read players from file or register player from console
 
@@ -66,8 +71,46 @@ public class Game {
         // Read deeds from file
 
 
+        // Shuffle players
+        Collections.shuffle(players);
         displayPlayers();
         displayBoard();
+    }
+
+    public void gameLoop(){
+        boolean continueGame = true;
+        Player currentPlayer;
+        int counter = 0;
+
+        while (continueGame){
+
+            // get currentPlayer
+            currentPlayer = players.get(currentPlayerIndex);
+
+            // roll
+            int diceRoll = dice.roll();
+
+            // move
+            int newPosition = currentPlayer.move(diceRoll);
+
+            // act
+            ui.displayMsg(currentPlayer.getName() + " slag: " +
+                    diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
+
+            // point to next player
+            currentPlayerIndex = currentPlayerIndex + 1;
+            if (currentPlayerIndex > players.size() - 1){
+                currentPlayerIndex = 0;
+            }
+
+            counter++;
+
+            if (counter > 100){
+                continueGame = false;
+            }
+
+        }
+
     }
 
     public void registerPlayers() {
@@ -100,7 +143,7 @@ public class Game {
 
         //serialiserer player objekterne
         for (Player p : players) {
-            String s = p.toString();
+            String s = p.getName() + "," + p.getCash();
             playerData.add(s);
         }
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
