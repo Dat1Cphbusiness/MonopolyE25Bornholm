@@ -43,3 +43,7 @@ Vi øver os på at nedbryde projektet i overskuelige dele og på at lede for for
 alle på holdet. [Læs evt. denne artikel](https://www.geeksforgeeks.org/software-engineering/software-development-life-cycle-sdlc).
 
 ![sdlc](./images/sdlc.jpg)
+
+## Data docs
+
+[Google doc](https://docs.google.com/spreadsheets/d/1jAHZ-FClwzCqnofuv8mTcKh8IiemnC2ZxSZwJ1L7Dn8/edit?usp=sharing)

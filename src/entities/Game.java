@@ -10,6 +10,7 @@ public class Game {
     private String name;
     private int maxPlayers;
     private ArrayList<Player> players;
+    private Board board;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
 
@@ -17,9 +18,13 @@ public class Game {
         this.name = name;
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
+        board = new Board();
     }
 
     public void startSession() {
+
+        // Read players from file or register player from console
+
         ArrayList<String> data = io.readData("data/playerData.csv");
         if (!data.isEmpty()) {
             for (String s : data) {
@@ -31,7 +36,37 @@ public class Game {
         } else {
             registerPlayers();
         }
+
+        // Read board data from file
+
+        ArrayList<String> boardData = io.readData("data/boardData.csv");
+
+        if (!boardData.isEmpty()) {
+            for (String s : boardData) {
+                String[] values = s.split(",");  //  "2,Property,BabyBlue,Rødovrevej,1200,,,Jon"
+                int id = Integer.parseInt(values[0].trim());
+                String type = values[1].trim();
+
+                switch (type){
+                    case "Property":
+                        String color = values[2].trim();
+                        String name = values[3].trim();
+                        int price = Integer.parseInt(values[4].trim());
+                        Space property = new Property(id, name, type, color, price);
+                        board.addSpace(property);
+                        break;
+                    default:
+                        ui.displayMsg("type: " + type + " not implemented yet");
+                }
+            }
+        }
+        // Read chance cards from file
+
+        // Read deeds from file
+
+
         displayPlayers();
+        displayBoard();
     }
 
     public void registerPlayers() {
@@ -49,6 +84,13 @@ public class Game {
     public void displayPlayers() {
         for (Player p : players) {
             System.out.println(p);
+        }
+    }
+
+    public void displayBoard(){
+        ui.displayMsg("***** Board: ********");
+        for (Space s: board.getSpaces()){
+            ui.displayMsg("Space: " + s.toString());
         }
     }
 
