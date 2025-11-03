@@ -1,4 +1,6 @@
-package entities;
+package entities.spaces;
+
+import entities.Space;
 
 public class Property extends Space {
     private String color;

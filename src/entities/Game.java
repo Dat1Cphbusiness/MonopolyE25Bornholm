@@ -1,4 +1,5 @@
 package entities;
+import entities.spaces.Property;
 import utils.FileIO;
 import utils.TextUI;
 
