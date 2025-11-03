@@ -1,3 +1,5 @@
+package entities;
+
 public class Player {
     private String name;
     private int cash;

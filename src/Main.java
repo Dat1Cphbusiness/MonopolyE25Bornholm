@@ -1,13 +1,15 @@
 /*
  * Vi startede dette program op for at lære om composition:
  * Vi lavede et simpelt klassediagram med to klasser der viser at
- * Game har en eller flere Players.
+ * entities.Game har en eller flere Players.
  *
- * Player instanser bliver oprettet via en dialog med brugeren
+ * entities.Player instanser bliver oprettet via en dialog med brugeren
  * Det indtastede bliver gemt i en csv fil, når programmet slutter
- * Når programmet starter op igen bliver samme data anvendt til at oprette Player instanser, så man ikke skal taste dem igen.
+ * Når programmet starter op igen bliver samme data anvendt til at oprette entities.Player instanser, så man ikke skal taste dem igen.
  *
  * */
+
+import entities.Game;
 
 public class Main {
 
