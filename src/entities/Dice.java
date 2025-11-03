@@ -25,4 +25,8 @@ public class Dice {
         return pair;
     }
 
+    @Override
+    public String toString() {
+        return "Dice{" + "firstDie=" + firstDie + ", secondDie=" + secondDie + ", pair=" + pair + '}';
+    }
 }

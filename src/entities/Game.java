@@ -1,4 +1,5 @@
 package entities;
+
 import entities.spaces.Property;
 import utils.FileIO;
 import utils.TextUI;
@@ -12,6 +13,7 @@ public class Game {
     private String name;
     private int maxPlayers;
     private int currentPlayerIndex;
+    Player currentPlayer;
     private ArrayList<Player> players;
     private Board board;
     private Dice dice;
@@ -53,7 +55,7 @@ public class Game {
                 int id = Integer.parseInt(values[0].trim());
                 String type = values[1].trim();
 
-                switch (type){
+                switch (type) {
                     case "Property":
                         String color = values[2].trim();
                         String name = values[3].trim();
@@ -77,12 +79,12 @@ public class Game {
         displayBoard();
     }
 
-    public void gameLoop(){
+    public void gameLoop() {
         boolean continueGame = true;
-        Player currentPlayer;
+
         int counter = 0;
 
-        while (continueGame){
+        while (continueGame) {
 
             // get currentPlayer
             currentPlayer = players.get(currentPlayerIndex);
@@ -90,27 +92,52 @@ public class Game {
             // roll
             int diceRoll = dice.roll();
 
+            // Check for streak (dobbeltslag)
+
+            if (dice.pair()) {
+                currentPlayer.increaseStreak();
+                ui.displayMsg("Dobbeltslag: " + dice.toString() );
+            }
+
             // move
             int newPosition = currentPlayer.move(diceRoll);
 
             // act
-            ui.displayMsg(currentPlayer.getName() + " slag: " +
-                    diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
+            ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
 
             // point to next player
-            currentPlayerIndex = currentPlayerIndex + 1;
-            if (currentPlayerIndex > players.size() - 1){
-                currentPlayerIndex = 0;
-            }
-
+            nextPlayer();
             counter++;
 
-            if (counter > 100){
+            if (counter > 100) {
+                System.out.println(counter);
                 continueGame = false;
             }
-
         }
 
+
+    }
+
+    private void nextPlayer() {
+        if (dice.pair()) {
+            if (currentPlayer.getStreak() > 2) {
+                ui.displayMsg("Ryk i spjældet, staks");
+                // TODO: Skal implementeres
+                currentPlayer.resetStreak();
+                currentPlayerIndex = currentPlayerIndex + 1;
+                if (currentPlayerIndex > players.size() - 1) {
+                    currentPlayerIndex = 0;
+                }
+            } else {
+                ui.displayMsg("Slå igen");
+            }
+        } else {
+            currentPlayer.resetStreak();
+            currentPlayerIndex = currentPlayerIndex + 1;
+            if (currentPlayerIndex > players.size() - 1) {
+                currentPlayerIndex = 0;
+            }
+        }
     }
 
     public void registerPlayers() {
@@ -131,9 +158,9 @@ public class Game {
         }
     }
 
-    public void displayBoard(){
+    public void displayBoard() {
         ui.displayMsg("***** Board: ********");
-        for (Space s: board.getSpaces()){
+        for (Space s : board.getSpaces()) {
             ui.displayMsg("Space: " + s.toString());
         }
     }
