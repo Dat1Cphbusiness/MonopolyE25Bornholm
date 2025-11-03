@@ -10,6 +10,8 @@ import java.util.Collections;
 
 public class Game {
 
+    private final int START_CASH = 30000;
+
     private String name;
     private int maxPlayers;
     private int currentPlayerIndex;
@@ -31,22 +33,93 @@ public class Game {
 
     public void setup() {
 
-        // Read players from file or register player from console
+        initializePlayers();
+        initializeBoard();
+        initializeCards();
+        initializeDeeds();
 
+        displayPlayers();
+        displayBoard();
+    }
+
+    private void initializeDeeds() {
+        // TODO: Skal kodes
+    }
+
+    private void initializeCards() {
+        // TODO: Skal kodes
+    }
+
+    public void gameLoop() {
+        boolean continueGame = true;
+        int newPosition;
+
+        int counter = 0;
+
+        while (continueGame) {
+
+            // get currentPlayer
+            currentPlayer = players.get(currentPlayerIndex);
+
+            // roll
+            int diceRoll = dice.roll();
+
+            // Move and check for double eyes
+
+            if (dice.pair()) {
+                currentPlayer.increaseStreak();
+                ui.displayMsg(currentPlayer.getName() + ": " + dice.toString());
+                if (currentPlayer.getStreak() > 2) {
+                    newPosition = 31;  // Jail
+                    ui.displayMsg("Ryk i spjældet, staks");
+                    nextPlayer();
+                } else {
+                    newPosition = currentPlayer.move(diceRoll);
+                }
+            } else {
+                newPosition = currentPlayer.move(diceRoll);
+                nextPlayer();
+            }
+
+            ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
+
+            // TODO: Act on the player just landet on space nr. newPosition
+
+
+            // TODO: Remove this counter stuff below when we're done and want to manually play
+            counter++;
+            if (counter > 50) {
+                System.out.println(counter + " runder. Forlader game-loop nu.");
+                continueGame = false;
+            }
+        }
+    }
+
+    private void nextPlayer() {
+        currentPlayer.resetStreak();
+        currentPlayerIndex = currentPlayerIndex + 1;
+        if (currentPlayerIndex > players.size() - 1) {
+            currentPlayerIndex = 0;
+        }
+    }
+
+    // Read players from file or register player from console
+    private void initializePlayers() {
         ArrayList<String> data = io.readData("data/playerData.csv");
         if (!data.isEmpty()) {
             for (String s : data) {
-                String[] values = s.split(",");//  "tess, 0"
+                String[] values = s.split(",");//  "tess, 0
+                String name = values[0];
                 int cash = Integer.parseInt(values[1].trim());
-                createPlayer(values[0], cash);
+                players.add(new Player(name, cash));
             }
-
         } else {
             registerPlayers();
         }
+        Collections.shuffle(players);
+    }
 
-        // Read board data from file
-
+    private void initializeBoard() {
         ArrayList<String> boardData = io.readData("data/boardData.csv");
 
         if (!boardData.isEmpty()) {
@@ -68,93 +141,20 @@ public class Game {
                 }
             }
         }
-        // Read chance cards from file
 
-        // Read deeds from file
-
-
-        // Shuffle players
-        Collections.shuffle(players);
-        displayPlayers();
-        displayBoard();
-    }
-
-    public void gameLoop() {
-        boolean continueGame = true;
-
-        int counter = 0;
-
-        while (continueGame) {
-
-            // get currentPlayer
-            currentPlayer = players.get(currentPlayerIndex);
-
-            // roll
-            int diceRoll = dice.roll();
-
-            // Check for streak (dobbeltslag)
-
-            if (dice.pair()) {
-                currentPlayer.increaseStreak();
-                ui.displayMsg("Dobbeltslag: " + dice.toString() );
-            }
-
-            // move
-            int newPosition = currentPlayer.move(diceRoll);
-
-            // act
-            ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
-
-            // point to next player
-            nextPlayer();
-            counter++;
-
-            if (counter > 100) {
-                System.out.println(counter);
-                continueGame = false;
-            }
-        }
-
-
-    }
-
-    private void nextPlayer() {
-        if (dice.pair()) {
-            if (currentPlayer.getStreak() > 2) {
-                ui.displayMsg("Ryk i spjældet, staks");
-                // TODO: Skal implementeres
-                currentPlayer.resetStreak();
-                currentPlayerIndex = currentPlayerIndex + 1;
-                if (currentPlayerIndex > players.size() - 1) {
-                    currentPlayerIndex = 0;
-                }
-            } else {
-                ui.displayMsg("Slå igen");
-            }
-        } else {
-            currentPlayer.resetStreak();
-            currentPlayerIndex = currentPlayerIndex + 1;
-            if (currentPlayerIndex > players.size() - 1) {
-                currentPlayerIndex = 0;
-            }
-        }
     }
 
     public void registerPlayers() {
         while (this.players.size() < this.maxPlayers) {
             String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+            players.add(new Player(name, START_CASH));
         }
     }
 
-    private void createPlayer(String name, int score) {
-        Player p = new Player(name, score);
-        players.add(p);
-    }
-
     public void displayPlayers() {
-        for (Player p : players) {
-            System.out.println(p);
+        ui.displayMsg("***** Players: ********");
+        for (Player player : players) {
+            ui.displayMsg(player.toString());
         }
     }
 
@@ -167,12 +167,13 @@ public class Game {
 
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
-
+        ui.displayMsg("***** Saving players ********");
         //serialiserer player objekterne
         for (Player p : players) {
             String s = p.getName() + "," + p.getCash();
             playerData.add(s);
         }
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
+        ui.displayMsg("***** Game saved and stopped for now ********");
     }
 }
