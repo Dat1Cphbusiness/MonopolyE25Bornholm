@@ -70,7 +70,7 @@ public class Game {
                 currentPlayer.increaseStreak();
                 ui.displayMsg(currentPlayer.getName() + ": " + dice.toString());
                 if (currentPlayer.getStreak() > 2) {
-                    newPosition = 31;  // Jail
+                    newPosition = 11;  // Jail
                     ui.displayMsg("Ryk i spjældet, staks");
                     nextPlayer();
                 } else {
