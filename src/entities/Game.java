@@ -57,6 +57,9 @@ public class Game {
     private void showGameMenu(){
         ArrayList<String> menuItems = new ArrayList<>();
         menuItems.add("1. Rul");
+        menuItems.add("2. Se spillerinfo");
+        menuItems.add("3. Se brættet");
+        menuItems.add("4. Afslut spil");
 
 
     }
