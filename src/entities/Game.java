@@ -53,17 +53,25 @@ public class Game {
 
     private void initializeCards() {
         // TODO: Skal kodes
+        int amount = 0;
         ArrayList<String> chanceCardsData = io.readData("data/chanceCard.csv");
         if (!chanceCardsData.isEmpty()) {
             for (String s : chanceCardsData) {
                 String[] values = s.split(",");//
                 String type = values[0];
-                if (type != "MoveJail") {
-                    int amount = Integer.parseInt(values[1].trim());
+
+                if (!type.equals("MoveJail")) {
+                    amount = Integer.parseInt(values[1].trim());
+
+                } else if (values[1] == "To jail") {
+                    amount = 0;
+
+                }
+
 
                     String instruction = values[2];
                     chanceCards.add(new ChanceCard(type, amount, instruction));
-                }
+
             }
         }
     }

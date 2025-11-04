@@ -5,7 +5,7 @@ Fee,300,Betal for vognvask og smøring kr. 300.,,,Jon
 Bonus,1000,Modtag udbytte af Deres aktier – kr. 1.000.,,,Jon
 Bonus,1000,Deres præmieobligation er udtrukket. De modtager kr. 1.000 af banken.,,,Jon
 Fee,1000,"De har kørt frem for ""Fuldt stop"". Betal kr. 1.000 i bøde.",,,Jon
-Move,,"Ryk frem til ""Start"".",,,Nikolai
+Move,0,"Ryk frem til ""Start"".",,,Nikolai
 Fee,1000,De har købt 4 nye dæk til Deres vogn. Betal 1.000 kr.,,,Nikolai
 Move,4000,"Ryk frem til Vimmelskaftet. Hvis de passerer ""Start"", indkasser da 4.000 kr.",,,Nikolai
 Move,4000,"Tag med Mols-Linien. Flyt brikken frem, og hvis de passerer ""Start"", indkasser da 4.000 kr.",,,Nikolai
@@ -16,14 +16,12 @@ Bonus,40000,"De modtager Matador-legatet for værdigt trængende på 40.000. Ved
 Fee,1000,Betal Deres bilforsikring – kr. 1.000.,,,Anders
 Bonus,500,De skal holde familiefest og får et tilskud fra hver medspiller på kr. 500.,,,Anders
 Move,4000,"Ryk frem til Frederiksberg Allé. Hvis De passerer ""START"", indkassér da kr. 4.000.",,,Anders
-Fee,,"Ejendomsskatterne er steget. Ekstraudgifterne er:
-kr. 800 pr. hus
-kr. 2.300 pr. hotel",,,Anders
+Fee,0,"Ejendomsskatterne er steget. Ekstraudgifterne er: kr. 800 pr. huskr. 2.300 pr. hotel",,,Anders
 Bonus,1000,De havde en række med elleve rigtige i tipning. Modtag kr. 1.000.,,,Signe
 Fee,2000,De har modtaget Deres tandlægeregning. Betal kr. 2.000.,,,Signe
 Bonus,3000,Kommunen har eftergivet et kvartals skat. Hæv i banken kr. 3.000.,,,Signe
 MoveJail,To jail,"Gå i fængsel. Ryk direkte til fængslet. Selv om De passerer ""START"", indkasserer De ikke kr. 4.000.",,,Signe
-Move,,"Ryk brikken frem til det nærmeste rederi, og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken.",,,Signe
+Move,0,"Ryk brikken frem til det nærmeste rederi, og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken.",,,Signe
 Bonus,500,De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller kr. 500.,,,Signe
 Move,-3,Ryk tre felter tilbage.,,,Sara
 Move,3,Ryk tre felter frem.,,,Sara
@@ -34,16 +32,14 @@ Fee,200,De har fået en parkeringsbøde. Betal kr. 200 i bøde.,,,Sara
 Move,4000,"Ryk frem til ""START"".",,,Emma
 Move,4000,"Ryk frem til Grønningen. Hvis De passerer ""START"", indkassér da kr. 4000.",,,Emma
 Bonus,500,De har vundet i Klasselotteriet. Modtag kr. 500.,,,Emma
-Move,,Tag ind på Rådhuspladsen.,,,Emma
+Move,0,Tag ind på Rådhuspladsen.,,,Emma
 Bday Bonus,200,Det er Deres fødselsdag. Modtag af hver medspiller kr. 200.,,,Emma
-Move,,"Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken.",,,Emma
+Move,0,"Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje, han ellers er berettiget til. Hvis selskabet ikke ejes af nogen, kan De købe det af banken.",,,Emma
 Fee,3000,Betal kr. 3.000 for reparation af Deres vogn.,,,Viktoria
 Fee,3000,Betal kr. 3.000 for reparation af Deres vogn.,,,Viktoria
 Bonus,200,"Værdien af egen avl fra nyttehaven udgør kr. 200, som De modtager af banken.",,,Viktoria
 Bonus,1000,Modtag udbytte af Deres aktier – kr. 1000,,,Viktoria
 Bonus,1000,De modtager Deres aktieudbytte. Modtag kr. 1000 af banken.,,,Viktoria
-Fee,,"Oliepriserne er steget, og De skal betale:
-kr. 500 pr. hus
-kr. 2000 pr. hotel.",,,Viktoria
+Fee,0,"Oliepriserne er steget, og De skal betale:kr. 500 pr. hus kr. 2000 pr. hotel.",,,Viktoria
 Bonus,500,De har vundet i Klasselotteriet. Modtag kr. 500.,,,Silas
 Bonus,1000,Grundet dyrtiden har De fået gageforhøjelse. Modtag kr. 1000.,,,Silas
