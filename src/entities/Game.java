@@ -44,6 +44,7 @@ public class Game {
 
         displayPlayers();
         displayBoard();
+
     }
 
     private void initializeDeeds() {
@@ -52,8 +53,20 @@ public class Game {
 
     private void initializeCards() {
         // TODO: Skal kodes
-    }
+        ArrayList<String> chanceCardsData = io.readData("data/chanceCard.csv");
+        if (!chanceCardsData.isEmpty()) {
+            for (String s : chanceCardsData) {
+                String[] values = s.split(",");//
+                String type = values[0];
+                if (type != "MoveJail") {
+                    int amount = Integer.parseInt(values[1].trim());
 
+                    String instruction = values[2];
+                    chanceCards.add(new ChanceCard(type, amount, instruction));
+                }
+            }
+        }
+    }
     private void showGameMenu(){
         ArrayList<String> menuItems = new ArrayList<>();
         menuItems.add("1. Rul");
