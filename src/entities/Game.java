@@ -47,8 +47,27 @@ public class Game {
     }
 
     private void initializeDeeds() {
-        // TODO: Skal kodes
-    }
+            ArrayList<String> deedData = io.readData("data/deedData.csv");
+
+            if (!deedData.isEmpty()) {
+                for (String s : deedData) {
+                    String[] values = s.split(",");  //  "2, Property, rent,1,2,3
+                    int number = Integer.parseInt(values[0].trim());
+                    String type = values[1].trim();
+                    int basicRent = Integer.parseInt(values[2].trim());
+                    int rentOne = Integer.parseInt(values[3].trim());
+                    int rentTwo = Integer.parseInt(values[4].trim());
+                    int rentThree = Integer.parseInt(values[5].trim());
+                    int rentFour = Integer.parseInt(values[6].trim());
+                    int rentHotel = Integer.parseInt(values[7].trim());
+                    int housePrice = Integer.parseInt(values[8].trim());
+                    int hotelPrice = Integer.parseInt(values[9].trim());
+                    int mortgage = Integer.parseInt(values[10].trim());
+
+                }
+            }
+        }
+
 
     private void initializeCards() {
         // TODO: Skal kodes
@@ -154,6 +173,13 @@ public class Game {
         }
 
     }
+
+
+
+
+
+
+
 
     public void registerPlayers() {
         while (this.players.size() < this.maxPlayers) {
