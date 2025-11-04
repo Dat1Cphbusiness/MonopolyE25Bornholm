@@ -1,0 +1,41 @@
+Number,Type,Color,Name,Price (DKK),Fee,Bonus,
+1,Go,,Go,,,4000,Jon
+2,Property,BabyBlue,Rødovrevej,1200,,,Jon
+3,Chance,,Chance,,,,Jon
+4,Property,BabyBlue,Hvidovrevej,1200,,,Jon
+5,Tax,,Betal indkomstskat,,4000 or 10%,,Jon
+6,Shipping Company,Shipping,Scandlines,4000,,,Nikolai
+7,Property,Orange,Roskildevej,2000,,,Nikolai
+8,Chance,,Chance,,,,Nikolai
+9,Property,Orange,Valby Langgade,2000,,,Nikolai
+10,Property,Orange,Allegade,2400,,,Nikolai
+11,Jail,,In jail,,,,Anders
+12,Property,Green,Frederiksberg Allé,2800,,,Anders
+13,Brewery,Sodared,Tuborg,3000,,,Anders
+14,Property,Green,Bülowsvej,2800,,,Anders
+15,Property,Green,Gl. Kongevej,3200,,,Anders
+16,Shipping Company,Shipping,Mols-Linien,4000,,,Signe
+17,Property,Grey,Bernstorffsvej,3600,,,Signe
+18,Chance,,Chance,,,,Signe
+19,Property,Grey,Hellerupvej,3600,,,Signe
+20,Property,Grey,Strandvejen,4000,,,Signe
+21,Free parking,,Parking,,,,Sara
+22,Property,Red,Trianglen,4400,,,Sara
+23,Chance,,Chance,,,,Sara
+24,Property,Red,Østerbrogade,4400,,,Sara
+25,Property,Red,Grønningen,4800,,,Sara
+26,ShippingCompany,Shipping,Scandlines Gedser-Rostock,4000,,,Emma
+27,Property,White,Bredgade,5200,,,Emma
+28,Property,White,Kgs. Nytorv,5200,,,Emma
+29,Brewery,SodaRed,Coca Cola,3000,,,Emma
+30,Property,White,Østergade,5600,,,Emma
+31,Jail,,In jail,,,,Viktoria
+32,Property,Yellow,Armager Torv ,6000,,,Viktoria
+33,Property,Yellow,Vimmelskaffet,6000,,,Viktoria
+34,Chance,,Chance,,,,Viktoria
+35,Property,Yellow,Nygade,6400,,,Viktoria
+36,Shipping company,Shipping,Scandlines Rødby-Puttgarden,4000,,,Silas
+37,Chance,,Chance,,,,Silas
+38,Property,Purple,Frederiksberggade,7000,,,Silas
+39,Tax,,Ekstraordinær skat,,2000,,Silas
+40,Property,Purple,Rådhuspladsen,8000,,,Silas
