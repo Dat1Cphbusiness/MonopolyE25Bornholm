@@ -21,6 +21,6 @@ public class Main {
 
         // missing here is the logic of the game
 
-        monopoly.endSession();
+        monopoly.endSession(); // tre drenge
     }
 }

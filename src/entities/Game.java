@@ -47,8 +47,51 @@ public class Game {
     }
 
     private void initializeDeeds() {
-        // TODO: Skal kodes
-    }
+            ArrayList<String> deedData = io.readData("data/deedData.csv");
+
+            if (!deedData.isEmpty()) {
+                for (String s : deedData) {
+                    if (s.startsWith("Number")) continue;
+                    String[] values = s.split(",");//  "2, Property, rent,1,2,3
+
+                    int number = ui.getIntOrZero(values[0].trim());
+                    String type = values[1].trim();
+                    int basicRent = 0, rentTwo = 0, rentThree = 0, rentFour = 0, rentOne = 0, rentHotel = 0, housePrice = 0, hotelPrice = 0, mortgage = 0;
+                    if(values.length > 2){
+                        basicRent = ui.getIntOrZero(values[2].trim());
+                        rentTwo = ui.getIntOrZero(values[4].trim());
+                        rentThree = ui.getIntOrZero(values[5].trim());
+                        rentFour = ui.getIntOrZero(values[6].trim());
+                        mortgage = ui.getIntOrZero(values[10].trim());
+                    }
+
+                    switch (type) {
+                        case "Property":
+
+                            if(values.length > 3) {
+                                rentOne = ui.getIntOrZero(values[3].trim());
+                                rentHotel = ui.getIntOrZero(values[7].trim());
+                                housePrice = ui.getIntOrZero(values[8].trim());
+                                hotelPrice = ui.getIntOrZero(values[9].trim());
+                                deeds.add(new Deed(number, type, basicRent, rentOne, rentTwo, rentThree, rentFour, rentHotel, housePrice, hotelPrice, mortgage));
+
+                            }
+                            break;
+
+                        case "Shipping Company":
+                            if(values.length > 1){
+                            deeds.add(new Deed(number, type, basicRent, rentTwo, rentThree, rentFour, mortgage));
+                            }
+                            break;
+
+                        case "Brewery":
+                            deeds.add(new Deed(mortgage));
+                            break;
+                    }
+                }
+            }
+        }
+
 
     private void initializeCards() {
         // TODO: Skal kodes
@@ -160,6 +203,13 @@ public class Game {
         }
 
     }
+
+
+
+
+
+
+
 
     public void registerPlayers() {
         while (this.players.size() < this.maxPlayers) {
