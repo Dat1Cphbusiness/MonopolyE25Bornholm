@@ -48,7 +48,7 @@ public class TextUI {
     }
 
     public int getIntOrZero(String s){
-        if (s.length() > 0){
+        if (s.trim().length() > 0){
             return Integer.parseInt(s);
         }
         return 0;
