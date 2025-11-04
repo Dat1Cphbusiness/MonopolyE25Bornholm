@@ -54,6 +54,13 @@ public class Game {
         // TODO: Skal kodes
     }
 
+    private void showGameMenu(){
+        ArrayList<String> menuItems = new ArrayList<>();
+        menuItems.add("1. Rul");
+
+
+    }
+
     public void gameLoop() {
         boolean continueGame = true;
         int newPosition;
