@@ -17,6 +17,8 @@ public class Game {
     private int currentPlayerIndex;
     Player currentPlayer;
     private ArrayList<Player> players;
+    private ArrayList<Deed> deeds;
+    private ArrayList<ChanceCard> chanceCards;
     private Board board;
     private Dice dice;
     TextUI ui = new TextUI();
@@ -26,6 +28,8 @@ public class Game {
         this.name = name;
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
+        deeds = new ArrayList<>();
+        chanceCards = new ArrayList<>();
         board = new Board();
         dice = new Dice();
         currentPlayerIndex = 0;
