@@ -46,4 +46,11 @@ public class TextUI {
         String input = sc.nextLine();
         return input;
     }
+
+    public int getIntOrZero(String s){
+        if (s.length() > 0){
+            return Integer.parseInt(s);
+        }
+        return 0;
+    }
 }

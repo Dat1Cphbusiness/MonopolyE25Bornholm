@@ -51,19 +51,43 @@ public class Game {
 
             if (!deedData.isEmpty()) {
                 for (String s : deedData) {
-                    String[] values = s.split(",");  //  "2, Property, rent,1,2,3
-                    int number = Integer.parseInt(values[0].trim());
-                    String type = values[1].trim();
-                    int basicRent = Integer.parseInt(values[2].trim());
-                    int rentOne = Integer.parseInt(values[3].trim());
-                    int rentTwo = Integer.parseInt(values[4].trim());
-                    int rentThree = Integer.parseInt(values[5].trim());
-                    int rentFour = Integer.parseInt(values[6].trim());
-                    int rentHotel = Integer.parseInt(values[7].trim());
-                    int housePrice = Integer.parseInt(values[8].trim());
-                    int hotelPrice = Integer.parseInt(values[9].trim());
-                    int mortgage = Integer.parseInt(values[10].trim());
+                    if (s.startsWith("Number")) continue;
+                    String[] values = s.split(",");//  "2, Property, rent,1,2,3
 
+                    int number = ui.getIntOrZero(values[0].trim());
+                    String type = values[1].trim();
+                    int basicRent = 0, rentTwo = 0, rentThree = 0, rentFour = 0, rentOne = 0, rentHotel = 0, housePrice = 0, hotelPrice = 0, mortgage = 0;
+                    if(values.length > 2){
+                        basicRent = ui.getIntOrZero(values[2].trim());
+                        rentTwo = ui.getIntOrZero(values[4].trim());
+                        rentThree = ui.getIntOrZero(values[5].trim());
+                        rentFour = ui.getIntOrZero(values[6].trim());
+                        mortgage = ui.getIntOrZero(values[10].trim());
+                    }
+
+                    switch (type) {
+                        case "Property":
+
+                            if(values.length > 3) {
+                                rentOne = ui.getIntOrZero(values[3].trim());
+                                rentHotel = ui.getIntOrZero(values[7].trim());
+                                housePrice = ui.getIntOrZero(values[8].trim());
+                                hotelPrice = ui.getIntOrZero(values[9].trim());
+                                deeds.add(new Deed(number, type, basicRent, rentOne, rentTwo, rentThree, rentFour, rentHotel, housePrice, hotelPrice, mortgage));
+
+                            }
+                            break;
+
+                        case "Shipping Company":
+                            if(values.length > 1){
+                            deeds.add(new Deed(number, type, basicRent, rentTwo, rentThree, rentFour, mortgage));
+                            }
+                            break;
+
+                        case "Brewery":
+                            deeds.add(new Deed(mortgage));
+                            break;
+                    }
                 }
             }
         }
