@@ -56,10 +56,13 @@ public class Game {
 
     private void showGameMenu(){
         ArrayList<String> menuItems = new ArrayList<>();
-        menuItems.add("1. Rul");
-        menuItems.add("2. Se spillerinfo");
-        menuItems.add("3. Se brættet");
-        menuItems.add("4. Afslut spil");
+        ArrayList<String> result = new ArrayList<>();
+        menuItems.add("Rul");
+        menuItems.add("Se spillerinfo");
+        menuItems.add("Se brættet");
+        menuItems.add("Afslut spil");
+        result = ui.promptChoice(menuItems,1,"Hvad vil du nu?");
+        ui.displayMsg("Du har valgt: " + result.get(0));
 
 
     }
@@ -98,7 +101,7 @@ public class Game {
             ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
 
             // TODO: Act on the player just landet on space nr. newPosition
-
+                showGameMenu();
 
             // TODO: Remove this counter stuff below when we're done and want to manually play
             counter++;
