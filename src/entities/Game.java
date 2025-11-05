@@ -1,7 +1,6 @@
 package entities;
 
 import entities.spaces.Property;
-import entities.spaces.Tax;
 import utils.FileIO;
 import utils.TextUI;
 
@@ -49,96 +48,28 @@ public class Game {
     }
 
     private void initializeDeeds() {
-        ArrayList<String> deedData = io.readData("data/deedData.csv");
-
-        if (!deedData.isEmpty()) {
-            for (String s : deedData) {
-                if (s.startsWith("Number"))
-                    continue;
-                String[] values = s.split(",");//  "2, Property, rent,1,2,3
-
-                int number = ui.getIntOrZero(values[0].trim());
-                String type = values[1].trim();
-                int basicRent = 0, rentTwo = 0, rentThree = 0, rentFour = 0, rentOne = 0, rentHotel = 0, housePrice = 0, hotelPrice = 0, mortgage = 0;
-                if (values.length > 2) {
-                    basicRent = ui.getIntOrZero(values[2].trim());
-                    rentTwo = ui.getIntOrZero(values[4].trim());
-                    rentThree = ui.getIntOrZero(values[5].trim());
-                    rentFour = ui.getIntOrZero(values[6].trim());
-                    mortgage = ui.getIntOrZero(values[10].trim());
-                }
-
-                switch (type) {
-                    case "Property":
-
-                        if (values.length > 3) {
-                            rentOne = ui.getIntOrZero(values[3].trim());
-                            rentHotel = ui.getIntOrZero(values[7].trim());
-                            housePrice = ui.getIntOrZero(values[8].trim());
-                            hotelPrice = ui.getIntOrZero(values[9].trim());
-                            deeds.add(new Deed(number, type, basicRent, rentOne, rentTwo, rentThree, rentFour, rentHotel, housePrice, hotelPrice, mortgage));
-
-                        }
-                        break;
-
-                    case "Shipping Company":
-                        if (values.length > 1) {
-                            deeds.add(new Deed(number, type, basicRent, rentTwo, rentThree, rentFour, mortgage));
-                        }
-                        break;
-
-                    case "Brewery":
-                        deeds.add(new Deed(mortgage));
-                        break;
-                }
-            }
-        }
+        // TODO: Skal kodes
     }
-
 
     private void initializeCards() {
         // TODO: Skal kodes
-        int amount = 0;
         ArrayList<String> chanceCardsData = io.readData("data/chanceCard.csv");
         if (!chanceCardsData.isEmpty()) {
             for (String s : chanceCardsData) {
                 String[] values = s.split(",");//
                 String type = values[0];
+                if (type != "MoveJail") {
+                    int amount = Integer.parseInt(values[1].trim());
 
-                if (!type.equals("MoveJail")) {
-                    amount = Integer.parseInt(values[1].trim());
-
-                } else
-                    if (values[1].equals("To jail")) {
-                        amount = 0;
-                    }
-
-                String instruction = values[2];
-                chanceCards.add(new ChanceCard(type, amount, instruction));
-
+                    String instruction = values[2];
+                    chanceCards.add(new ChanceCard(type, amount, instruction));
+                }
             }
         }
-        Collections.shuffle(chanceCards);
     }
-
-    private void showGameMenu() {
+    private void showGameMenu(){
         ArrayList<String> menuItems = new ArrayList<>();
-        ArrayList<String> result = new ArrayList<>();
-        menuItems.add("Rul");
-        menuItems.add("Se spillerinfo");
-        menuItems.add("Se brættet");
-        menuItems.add("Afslut spil");
-        result = ui.promptChoice(menuItems, 1, "Hvad vil du nu?");
-        String choice = result.get(0);
-        ui.displayMsg("Du har valgt: " + choice);
-
-        switch (choice) {
-            case "Se spillerinfo":
-                displayPlayers();
-                break;
-            default:
-                break;
-        }
+        menuItems.add("1. Rul");
 
 
     }
@@ -156,8 +87,6 @@ public class Game {
 
             // roll
             int diceRoll = dice.roll();
-
-            //diceRoll = 4;  // tax
 
             // Move and check for double eyes
 
@@ -177,19 +106,9 @@ public class Game {
             }
 
             ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
-            currentPlayer.setPosition(newPosition);
 
-            // TODO: Act on the player just landed on space nr. newPosition
+            // TODO: Act on the player just landet on space nr. newPosition
 
-            Space spaceToActOn = board.getSpaceById(newPosition);
-            if (spaceToActOn != null) {
-                spaceToActOn.act(currentPlayer, deeds, ui);
-            } else {
-                ui.displayMsg("Vi har ikke implementeret denne felttype endnu");
-            }
-
-
-            showGameMenu();
 
             // TODO: Remove this counter stuff below when we're done and want to manually play
             counter++;
@@ -241,12 +160,6 @@ public class Game {
                         Space property = new Property(id, name, type, color, price);
                         board.addSpace(property);
                         break;
-                    case "Tax":
-                        name = values[3].trim();
-                        String taxText = values[5].trim();
-                        Space tax = new Tax(id, name, type, taxText);
-                        board.addSpace(tax);
-                        break;
                     default:
                         ui.displayMsg("type: " + type + " not implemented yet");
                 }
@@ -254,7 +167,6 @@ public class Game {
         }
 
     }
-
 
     public void registerPlayers() {
         while (this.players.size() < this.maxPlayers) {
