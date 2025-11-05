@@ -13,6 +13,14 @@ public class Board {
         this.spaces.add(space);
     }
 
+    public Space getSpaceById(int id){
+       for (Space s : spaces){
+           if (s.getId() == id)
+               return s;
+       }
+       return null;  // in case there is no space with the given id
+    }
+
     public ArrayList<Space> getSpaces() {
         return spaces;
     }

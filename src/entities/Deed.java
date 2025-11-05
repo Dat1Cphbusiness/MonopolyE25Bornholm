@@ -86,4 +86,9 @@ public class Deed {
     public int getMortgage() {
         return mortgage;
     }
+
+    @Override
+    public String toString() {
+        return "Deed{" + "number=" + number + ", type='" + type + '\'' + ", basicRent=" + basicRent + ", rentOne=" + rentOne + ", rentTwo=" + rentTwo + ", rentThree=" + rentThree + ", rentFour=" + rentFour + ", rentHotel=" + rentHotel + ", housePrice=" + housePrice + ", hotelPrice=" + hotelPrice + ", mortgage=" + mortgage + '}';
+    }
 }

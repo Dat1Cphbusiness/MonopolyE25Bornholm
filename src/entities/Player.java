@@ -1,16 +1,22 @@
 package entities;
 
+import entities.spaces.Property;
+
+import java.util.ArrayList;
+
 public class Player {
     private String name;
     private int cash;
     private int position;  // 1..40
     private int streak;
+    private ArrayList<Property> properties;
     
     public Player(String name, int cash){
         this.name = name;
         this.cash = cash;
         this.position = 1;  // starting position
         this.streak = 0;
+        properties = new ArrayList<>();
     }
 
     public int move(int diceRoll){
@@ -46,6 +52,19 @@ public class Player {
         streak = 0;
     }
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int addProperty(Property property){
+        properties.add(property);
+        return properties.size();
+    }
+
+    public int drawCash(int amount){
+        cash = cash - amount;
+        return cash;
+    }
 
     @Override
     public String toString() {

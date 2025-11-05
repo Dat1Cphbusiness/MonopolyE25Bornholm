@@ -1,6 +1,7 @@
 package entities;
 
 import entities.spaces.Property;
+import entities.spaces.Tax;
 import utils.FileIO;
 import utils.TextUI;
 
@@ -128,7 +129,16 @@ public class Game {
         menuItems.add("Se brættet");
         menuItems.add("Afslut spil");
         result = ui.promptChoice(menuItems, 1, "Hvad vil du nu?");
-        ui.displayMsg("Du har valgt: " + result.get(0));
+        String choice = result.get(0);
+        ui.displayMsg("Du har valgt: " + choice);
+
+        switch (choice) {
+            case "Se spillerinfo":
+                displayPlayers();
+                break;
+            default:
+                break;
+        }
 
 
     }
@@ -146,6 +156,8 @@ public class Game {
 
             // roll
             int diceRoll = dice.roll();
+
+            //diceRoll = 4;  // tax
 
             // Move and check for double eyes
 
@@ -165,8 +177,18 @@ public class Game {
             }
 
             ui.displayMsg(currentPlayer.getName() + " slag: " + diceRoll + " Flyttet til: " + newPosition + " Cash: " + currentPlayer.getCash());
+            currentPlayer.setPosition(newPosition);
 
-            // TODO: Act on the player just landet on space nr. newPosition
+            // TODO: Act on the player just landed on space nr. newPosition
+
+            Space spaceToActOn = board.getSpaceById(newPosition);
+            if (spaceToActOn != null) {
+                spaceToActOn.act(currentPlayer, deeds, ui);
+            } else {
+                ui.displayMsg("Vi har ikke implementeret denne felttype endnu");
+            }
+
+
             showGameMenu();
 
             // TODO: Remove this counter stuff below when we're done and want to manually play
@@ -218,6 +240,12 @@ public class Game {
                         int price = Integer.parseInt(values[4].trim());
                         Space property = new Property(id, name, type, color, price);
                         board.addSpace(property);
+                        break;
+                    case "Tax":
+                        name = values[3].trim();
+                        String taxText = values[5].trim();
+                        Space tax = new Tax(id, name, type, taxText);
+                        board.addSpace(tax);
                         break;
                     default:
                         ui.displayMsg("type: " + type + " not implemented yet");
