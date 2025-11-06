@@ -9,6 +9,8 @@ import utils.TextUI;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// Initializing the Game
+
 public class GameFactory {
 
     public GameFactory() {
