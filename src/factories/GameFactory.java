@@ -1,6 +1,7 @@
 package factories;
 
 import entities.*;
+import entities.spaces.FreeParking;
 import entities.spaces.Property;
 import entities.spaces.Tax;
 import utils.FileIO;
@@ -60,6 +61,11 @@ public class GameFactory {
                         Space tax = new Tax(id, name, type, taxText);
                         board.addSpace(tax);
                         break;
+
+                    case "Free parking":
+                        name = values[3].trim();
+                        Space freeParking = new FreeParking(id, name, type);
+                        board.addSpace(freeParking);
                     default:
                         ui.displayMsg("type: " + type + " not implemented yet");
                 }
@@ -138,6 +144,5 @@ public class GameFactory {
             }
         }
     }
-
 
 }

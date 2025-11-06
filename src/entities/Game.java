@@ -53,7 +53,7 @@ public class Game {
         while (continueGame) {
             currentPlayer = players.get(currentPlayerIndex);
             int diceRoll = dice.roll();
-
+                diceRoll = 20;
             if (dice.pair()) {
                 currentPlayer.increaseStreak();
                 ui.displayMsg(currentPlayer.getName() + ": " + dice.toString());
