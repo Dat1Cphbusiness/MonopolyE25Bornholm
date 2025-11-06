@@ -63,6 +63,7 @@ public class GameFactory {
                         break;
 
                     case "Free parking":
+                        // TODO: Should be merged
                         name = values[3].trim();
                         Space freeParking = new FreeParking(id, name, type);
                         board.addSpace(freeParking);
