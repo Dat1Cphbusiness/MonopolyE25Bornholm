@@ -62,6 +62,7 @@ public class GameFactory {
                         board.addSpace(tax);
                         break;
                     case "Brewery":
+                        // TODO: For merging
                         name = values[3].trim();
                         price = Integer.parseInt(values[4].trim());
                         Space brewery = new Brewery(id, name, type, price);
