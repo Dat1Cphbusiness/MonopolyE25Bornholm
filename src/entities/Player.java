@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private int cash;
+    private int lastRoll;
     private int position;  // 1..40
     private int streak;
     private ArrayList<Property> properties;
+    private ArrayList<Space> ownedSpaces = new ArrayList<>();
     
     public Player(String name, int cash){
         this.name = name;
@@ -36,8 +38,16 @@ public class Player {
         return cash;
     }
 
+    public void addCash(int amount){
+        cash = cash + amount;
+    }
+
     public int getPosition() {
         return position;
+    }
+
+    public void addProperty(Space space) {
+        ownedSpaces.add(space);
     }
 
     public int getStreak() {
@@ -61,10 +71,21 @@ public class Player {
         return properties.size();
     }
 
+
+
     public int drawCash(int amount){
         cash = cash - amount;
         return cash;
     }
+
+    public void setLastRoll(int roll){
+        this.lastRoll = roll;
+    }
+
+    public int getLastRoll(){
+        return lastRoll;
+    }
+
 
     @Override
     public String toString() {
