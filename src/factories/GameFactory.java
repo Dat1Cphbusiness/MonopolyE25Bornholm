@@ -5,6 +5,7 @@ import entities.spaces.Property;
 import entities.spaces.Tax;
 import utils.FileIO;
 import utils.TextUI;
+import entities.spaces.Brewery;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,6 +60,12 @@ public class GameFactory {
                         String taxText = values[5].trim();
                         Space tax = new Tax(id, name, type, taxText);
                         board.addSpace(tax);
+                        break;
+                    case "Brewery":
+                        name = values[3].trim();
+                        price = Integer.parseInt(values[4].trim());
+                        Space brewery = new Brewery(id, name, type, price);
+                        board.addSpace(brewery);
                         break;
                     default:
                         ui.displayMsg("type: " + type + " not implemented yet");

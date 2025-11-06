@@ -13,7 +13,7 @@ public class Deed {
     private int housePrice;
     private int hotelPrice;
     private int mortgage;
-
+    private Player owner;
 
     public Deed (int number, String type, int basicRent, int rentOne, int rentTwo, int rentThree, int rentFour, int rentHotel, int housePrice, int hotelPrice, int mortgage){
         this.number = number;
@@ -86,6 +86,12 @@ public class Deed {
     public int getMortgage() {
         return mortgage;
     }
+
+    public Player getOwner(){
+        return owner;
+    }
+
+
 
     @Override
     public String toString() {

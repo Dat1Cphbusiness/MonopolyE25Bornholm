@@ -53,6 +53,8 @@ public class Game {
         while (continueGame) {
             currentPlayer = players.get(currentPlayerIndex);
             int diceRoll = dice.roll();
+            currentPlayer.setLastRoll(diceRoll);
+            diceRoll = 28;
 
             if (dice.pair()) {
                 currentPlayer.increaseStreak();
