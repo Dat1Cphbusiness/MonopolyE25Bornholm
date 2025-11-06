@@ -45,7 +45,7 @@ public class GameFactory {
                 String[] values = s.split(",");  //  "2,Property,BabyBlue,Rødovrevej,1200,,,Jon"
                 int id = Integer.parseInt(values[0].trim());
                 String type = values[1].trim();
-
+                // switch case
                 switch (type) {
                     case "Property":
                         String color = values[2].trim();
