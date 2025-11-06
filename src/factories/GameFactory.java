@@ -1,6 +1,7 @@
 package factories;
 
 import entities.*;
+import entities.spaces.FreeParking;
 import entities.spaces.Property;
 import entities.spaces.Tax;
 import utils.FileIO;
@@ -45,7 +46,7 @@ public class GameFactory {
                 String[] values = s.split(",");  //  "2,Property,BabyBlue,Rødovrevej,1200,,,Jon"
                 int id = Integer.parseInt(values[0].trim());
                 String type = values[1].trim();
-                // switch case
+
                 switch (type) {
                     case "Property":
                         String color = values[2].trim();
@@ -60,6 +61,12 @@ public class GameFactory {
                         Space tax = new Tax(id, name, type, taxText);
                         board.addSpace(tax);
                         break;
+
+                    case "Free parking":
+                        // TODO: Should be merged
+                        name = values[3].trim();
+                        Space freeParking = new FreeParking(id, name, type);
+                        board.addSpace(freeParking);
                     default:
                         ui.displayMsg("type: " + type + " not implemented yet");
                 }
@@ -138,6 +145,5 @@ public class GameFactory {
             }
         }
     }
-
 
 }
